@@ -1,0 +1,14 @@
+config:
+  target: 'http://35.199.93.166'
+  phases:
+    - duration: 10
+      arrivalRate: 20
+  defaults:
+    headers:
+      #ADD HEADER FAIL
+      fail: '0.7'
+scenarios:
+  - flow:
+    - get:
+        url: "/"
+
