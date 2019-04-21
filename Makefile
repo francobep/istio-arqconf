@@ -1,18 +1,6 @@
-#	Copyright 2018, Google, Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-PROJECT_ID=$(shell gcloud config list project --format=flattened | awk 'FNR == 1 {print $$2}')
-ZONE=us-west1-b
-CLUSTER_NAME=my-istio-cluster
+PROJECT_ID=steady-citron-95714
+ZONE=southamerica-east1-a
+CLUSTER_NAME=arqconfi-istio-cluster
 ZIPKIN_POD_NAME=$(shell kubectl -n istio-system get pod -l app=zipkin -o jsonpath='{.items[0].metadata.name}')
 JAEGER_POD_NAME=$(shell kubectl -n istio-system get pod -l app=jaeger -o jsonpath='{.items[0].metadata.name}')
 SERVICEGRAPH_POD_NAME=$(shell kubectl -n istio-system get pod -l app=servicegraph -o jsonpath='{.items[0].metadata.name}')
@@ -20,7 +8,7 @@ GRAFANA_POD_NAME=$(shell kubectl -n istio-system get pod -l app=grafana -o jsonp
 PROMETHEUS_POD_NAME=$(shell kubectl -n istio-system get pod -l app=prometheus -o jsonpath='{.items[0].metadata.name}')
 GCLOUD_USER=$(shell gcloud config get-value core/account)
 CONTAINER_NAME=istiotest
-ISTIO_VERSION=1.0.5
+ISTIO_VERSION=1.1.3
 
 download-istio:
 	wget https://github.com/istio/istio/releases/download/$(ISTIO_VERSION)/istio-$(ISTIO_VERSION)-linux.tar.gz
